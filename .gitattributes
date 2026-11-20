@@ -1,2 +1,12 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# GitLFS storage
+# images
+*.png filter=lfs merge=lfs -text
+*.jpg filter=lfs merge=lfs -text
+*.jpeg filter=lfs merge=lfs -text
+
+# audio
+*.ogg filter=lfs merge=lfs -text
+*.wav filter=lfs merge=lfs -text
