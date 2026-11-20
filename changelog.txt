@@ -1,0 +1,12 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.0.1
+Date: 2026-11-13
+
+  Features:
+    - Added smelting wood for coal recipe
+---------------------------------------------------------------------------------------------------
+Version: 0.0.2
+Date: 2026-11-17
+
+  Features:
+    - Added feature that blocks overriding filtered toolbar slots
