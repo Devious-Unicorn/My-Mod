@@ -1,4 +1,4 @@
---- The number of slots in the Factorio hotbar if you have all of them turned on
+--- The number of slots in the Factorio hotbar if you have all of them turned on<br>
 --- 4 rows * 10 slots
 local TOTAL_SLOTS = 40
 
