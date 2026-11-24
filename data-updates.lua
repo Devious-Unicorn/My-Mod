@@ -1,7 +1,7 @@
 local loader_tech = {
     type = "technology",
     name = "loader-tech",
-    icon = "__My-Mod__/graphics/loader.png",
+    icon = "__My-Mod__/graphics/icon/loader.png",
     prerequisites = { "logistics" },
     effects = {
         {
