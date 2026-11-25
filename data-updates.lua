@@ -45,7 +45,7 @@ local express_loader_tech = {
 	type = "technology",
 	name = "express-loader-tech",
 	icon = "__My-Mod__/graphics/icon/express-loader.png",
-	prerequisites = { "logistics", "logistics-2", "loader-tech", "steel-processing", "lubricant", "fast-loader-tech", "logistics-3" },
+	prerequisites = { "logistics", "logistics-2", "loader-tech", "steel-processing", "lubricant", "fast-loader-tech", "logistics-3", "automation-3" },
 	effects = {
 		{
 			type = "unlock-recipe",

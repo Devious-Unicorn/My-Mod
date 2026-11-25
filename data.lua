@@ -148,5 +148,6 @@ local express_loader_recipe = {
 	}
 }
 
-data:extend({ woodSmelting, loader_entity, loader_item, loader_recipe, fast_loader_item, fast_loader_recipe,
-	fast_loader_entity, express_loader_entity, express_loader_item, express_loader_recipe })
+-- TODO: add turbo loaders
+
+data:extend({ woodSmelting, loader_entity, loader_item, loader_recipe, fast_loader_item, fast_loader_recipe, fast_loader_entity, express_loader_entity, express_loader_item, express_loader_recipe })
