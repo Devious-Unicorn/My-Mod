@@ -90,7 +90,7 @@ local fast_loader_recipe = {
 	ingredients = {
 		{ type = "item", name = "iron-plate",          amount = 15 },
 		{ type = "item", name = "electronic-circuit",  amount = 25 },
-		{ type = "item", name = "steel-plate",        amount = 5 },
+		{ type = "item", name = "steel-plate",         amount = 5 },
 		{ type = "item", name = "fast-transport-belt", amount = 5 }
 	},
 	results = {
@@ -98,4 +98,55 @@ local fast_loader_recipe = {
 	}
 }
 
-data:extend({ woodSmelting, loader_entity, loader_item, loader_recipe, fast_loader_item, fast_loader_recipe, fast_loader_entity })
+local express_loader_name = "my-express-loader"
+local express_loader_entity = table.deepcopy(data.raw["loader-1x1"]["loader-1x1"])
+express_loader_entity.name = express_loader_name
+express_loader_entity.icon = "__My-Mod__/graphics/icon/express-loader.png"
+express_loader_entity.minable = { mining_time = 0.2, result = express_loader_name }
+express_loader_entity.speed = data.raw["transport-belt"]["express-transport-belt"].speed
+express_loader_entity.hidden = false
+express_loader_entity.collision_box = { { -0.4, -0.4 }, { 0.4, 0.4 } }
+express_loader_entity.selection_box = { { -0.5, -0.5 }, { 0.5, 0.5 } }
+express_loader_entity.tile_width = 1
+express_loader_entity.tile_height = 1
+express_loader_entity.collision_mask = table.deepcopy(data.raw["transport-belt"]["express-transport-belt"]
+	.collision_mask)
+express_loader_entity.flags = { "placeable-neutral", "player-creation" }
+express_loader_entity.belt_animation_set = data.raw["transport-belt"]["express-transport-belt"].belt_animation_set
+express_loader_entity.structure = table.deepcopy(data.raw["underground-belt"]["express-underground-belt"].structure)
+express_loader_entity.structure.direction_in.sheet.filename = "__My-Mod__/graphics/entity/express-loader-structure.png"
+express_loader_entity.structure.direction_out.sheet.filename = "__My-Mod__/graphics/entity/express-loader-structure.png"
+express_loader_entity.structure.front_patch = nil
+express_loader_entity.structure.back_patch = nil
+
+local express_loader_item = {
+	type = "item",
+	name = express_loader_name,
+	icon = "__My-Mod__/graphics/icon/express-loader.png",
+	icon_size = 64,
+	subgroup = "belt",
+	order = "d[loader]-c[my-express-loader]",
+	place_result = express_loader_name,
+	stack_size = 50
+}
+
+local express_loader_recipe = {
+	type = "recipe",
+	category = "crafting-with-fluid",
+	name = express_loader_name,
+	enabled = false,
+	ingredients = {
+		{ type = "item",  name = "iron-plate",             amount = 20 },
+		{ type = "item",  name = "electronic-circuit",     amount = 25 },
+		{ type = "item",  name = "advanced-circuit",       amount = 25 },
+		{ type = "item",  name = "steel-plate",            amount = 10 },
+		{ type = "item",  name = "express-transport-belt", amount = 5 },
+		{ type = "fluid", name = "lubricant",              amount = 10 }
+	},
+	results = {
+		{ type = "item", name = express_loader_name, amount = 1 }
+	}
+}
+
+data:extend({ woodSmelting, loader_entity, loader_item, loader_recipe, fast_loader_item, fast_loader_recipe,
+	fast_loader_entity, express_loader_entity, express_loader_item, express_loader_recipe })

@@ -41,4 +41,28 @@ local fast_loader_tech = {
 	order = "c-a"
 }
 
-data:extend { loader_tech, fast_loader_tech }
+local express_loader_tech = {
+	type = "technology",
+	name = "express-loader-tech",
+	icon = "__My-Mod__/graphics/icon/express-loader.png",
+	prerequisites = { "logistics", "logistics-2", "loader-tech", "steel-processing", "lubricant", "fast-loader-tech", "logistics-3" },
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "my-express-loader"
+		}
+	},
+	unit = {
+		count = 500,
+		ingredients = {
+			{ "automation-science-pack", 3 },
+			{"logistic-science-pack", 2},
+			{"chemical-science-pack", 1},
+			{"production-science-pack", 1}
+		},
+		time = 45
+	},
+	order = "c-a"
+}
+
+data:extend { loader_tech, fast_loader_tech, express_loader_tech }
