@@ -8,6 +8,9 @@ local woodSmelting = {
 }
 
 local loader_name = "my-loader"
+local fast_loader_name = "my-fast-loader"
+local express_loader_name = "my-express-loader"
+local turbo_loader_name = "my-turbo-loader"
 local loader_entity = table.deepcopy(data.raw["loader-1x1"]["loader-1x1"])
 loader_entity.name = loader_name
 loader_entity.icon = "__My-Mod__/graphics/icon/loader.png"
@@ -26,6 +29,8 @@ loader_entity.structure.direction_in.sheet.filename = "__My-Mod__/graphics/entit
 loader_entity.structure.direction_out.sheet.filename = "__My-Mod__/graphics/entity/loader-structure.png"
 loader_entity.structure.front_patch = nil
 loader_entity.structure.back_patch = nil
+loader_entity.filter_count = 5
+loader_entity.next_upgrade = fast_loader_name
 
 local loader_item = {
 	type = "item",
@@ -52,7 +57,6 @@ local loader_recipe = {
 	}
 }
 
-local fast_loader_name = "my-fast-loader"
 local fast_loader_entity = table.deepcopy(data.raw["loader-1x1"]["loader-1x1"])
 fast_loader_entity.name = fast_loader_name
 fast_loader_entity.icon = "__My-Mod__/graphics/icon/fast-loader.png"
@@ -71,6 +75,8 @@ fast_loader_entity.structure.direction_in.sheet.filename = "__My-Mod__/graphics/
 fast_loader_entity.structure.direction_out.sheet.filename = "__My-Mod__/graphics/entity/fast-loader-structure.png"
 fast_loader_entity.structure.front_patch = nil
 fast_loader_entity.structure.back_patch = nil
+fast_loader_entity.filter_count = 5
+fast_loader_entity.next_upgrade = express_loader_name
 
 local fast_loader_item = {
 	type = "item",
@@ -98,7 +104,6 @@ local fast_loader_recipe = {
 	}
 }
 
-local express_loader_name = "my-express-loader"
 local express_loader_entity = table.deepcopy(data.raw["loader-1x1"]["loader-1x1"])
 express_loader_entity.name = express_loader_name
 express_loader_entity.icon = "__My-Mod__/graphics/icon/express-loader.png"
@@ -118,6 +123,9 @@ express_loader_entity.structure.direction_in.sheet.filename = "__My-Mod__/graphi
 express_loader_entity.structure.direction_out.sheet.filename = "__My-Mod__/graphics/entity/express-loader-structure.png"
 express_loader_entity.structure.front_patch = nil
 express_loader_entity.structure.back_patch = nil
+express_loader_entity.filter_count = 5
+-- TODO: Uncomment when turbo loaders are added
+-- express_loader_entity.next_upgrade = turbo_loader_name
 
 local express_loader_item = {
 	type = "item",
@@ -150,4 +158,11 @@ local express_loader_recipe = {
 
 -- TODO: add turbo loaders
 
-data:extend({ woodSmelting, loader_entity, loader_item, loader_recipe, fast_loader_item, fast_loader_recipe, fast_loader_entity, express_loader_entity, express_loader_item, express_loader_recipe })
+local quicksave_hotkey = {
+	type = "custom-input",
+	name = "my-quicksave-trigger",
+	key_sequence = "CONTROL + S",
+	consuming = "none"
+}
+
+data:extend({ woodSmelting, loader_entity, loader_item, loader_recipe, fast_loader_item, fast_loader_recipe, fast_loader_entity, express_loader_entity, express_loader_item, express_loader_recipe, quicksave_hotkey })

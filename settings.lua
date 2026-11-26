@@ -1,0 +1,1 @@
+-- TODO: add setting for quicksave control

@@ -114,3 +114,28 @@ script.on_event(defines.events.on_player_set_quick_bar_slot, function(event)
 		end
 	end
 end)
+
+local MAX_SLOTS = 3
+
+script.on_init(function()
+	storage.slot = 1
+end)
+
+script.on_event("my-quicksave-trigger", function(event)
+	storage.slot = storage.slot or 1
+	-- TODO: add UI popup to choose save name
+	local save_name = "_quicksave-" .. storage.slot
+
+	if game.is_multiplayer() then
+		game.server_save(save_name)
+	else
+		game.auto_save(save_name)
+	end
+
+	local player = game.get_player(event.player_index)
+	if player then
+		player.print("Quicksaved to _autosave" .. save_name)
+	end
+
+	storage.slot = (storage.slot % MAX_SLOTS) + 1
+end)
